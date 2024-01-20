@@ -22,13 +22,17 @@ jobs:
         with:
           hugo-version: '0.119.0'
           extended: true
-
-      - name: Build
-        run: hugo --minify
+      - name: Setup autoprefixer  
         run: npm install -D autoprefixer
+      - name: Setup postcss-cli
         run: npm install -D postcss-cli
+      - name: Setup postcss
         run: npm install -D postcss
 
+
+      - name: Bbuild hugo
+        run: hugo --minify
+      
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
